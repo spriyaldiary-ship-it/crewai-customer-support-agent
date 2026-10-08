@@ -1,17 +1,18 @@
-# 🤖 Multi-Agent Customer Support
+# 🤖 CrewAI Customer Support Agent
 
-A multi-agent customer support application built using **CrewAI** and **Streamlit**.
+A multi-agent AI customer support application built with **CrewAI** and **Streamlit**.
 
-The application uses three sequential AI agents to answer a user query, search the web, and record the results.
+The project demonstrates how multiple specialized AI agents can work sequentially to answer customer questions, perform web research, and record the final interaction.
 
 ## 🚀 Features
 
-* 🤖 **Assistant Agent** — Answers the user's question using its own knowledge.
-* 🌐 **Web Search Assistant** — Searches the web and provides a researched answer.
+* 🤖 **Assistant Agent** — Generates an initial answer to the user's question.
+* 🌐 **Web Search Assistant** — Performs web research and provides an updated answer.
 * 📝 **Entry Agent** — Records the customer support interaction.
-* 💾 Automatically creates and writes to `answers.txt`.
-* 🖥️ Simple Streamlit user interface.
-* 🔐 API keys are stored securely using environment variables.
+* 💾 Saves interaction results to `answers.txt`.
+* 🖥️ Streamlit-based user interface.
+* 🔐 API keys managed through environment variables.
+* 🧩 Demonstrates sequential multi-agent orchestration using CrewAI.
 
 ## 🏗️ Architecture
 
@@ -34,25 +35,56 @@ Entry Agent
 answers.txt
 ```
 
-## 🛠️ Tech Stack
+Each agent has a specific responsibility, demonstrating how a multi-agent workflow can divide a customer-support task into smaller steps.
 
-* Python
-* CrewAI
-* Streamlit
-* OpenAI
-* Serper Web Search
-* python-dotenv
+## 🔄 Workflow
 
-## 📁 Project Structure
+```text
+User Question
+      │
+      ▼
+Assistant Agent
+      │
+      ▼
+Initial Answer
+      │
+      ▼
+Web Search Assistant
+      │
+      ▼
+Web-Researched Answer
+      │
+      ▼
+Entry Agent
+      │
+      ▼
+Save Interaction
+      │
+      ▼
+answers.txt
+```
+
+## 🛠️ Technology Stack
+
+| Technology    | Purpose                   |
+| ------------- | ------------------------- |
+| Python        | Application development   |
+| CrewAI        | Multi-agent orchestration |
+| Streamlit     | Web interface             |
+| OpenAI        | LLM-powered responses     |
+| Serper        | Web search                |
+| python-dotenv | Environment configuration |
+
+## 📂 Project Structure
 
 ```text
 buildathon-support-crew/
 │
 ├── app.py
 ├── README.md
+├── answers.txt
 ├── .gitignore
 ├── .env              # Local only - not committed
-├── answers.txt       # Generated locally
 └── venv/             # Local virtual environment
 ```
 
@@ -61,13 +93,13 @@ buildathon-support-crew/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/spriyaldiary-ship-it/buildathon-support-crew.git
+git clone https://github.com/spriyaldiary-ship-it/crewai-customer-support-agent.git
 ```
 
 ### 2. Open the project
 
 ```bash
-cd buildathon-support-crew
+cd crewai-customer-support-agent
 ```
 
 ### 3. Create a virtual environment
@@ -78,7 +110,7 @@ python -m venv venv
 
 ### 4. Activate the virtual environment
 
-Windows PowerShell:
+#### Windows PowerShell
 
 ```powershell
 venv\Scripts\Activate.ps1
@@ -90,16 +122,16 @@ venv\Scripts\Activate.ps1
 pip install streamlit crewai crewai-tools python-dotenv
 ```
 
-### 6. Create `.env`
+### 6. Configure environment variables
 
-Create a `.env` file in the project folder:
+Create a `.env` file in the project directory:
 
 ```env
 OPENAI_API_KEY=your_openai_api_key
 SERPER_API_KEY=your_serper_api_key
 ```
 
-**Never commit your `.env` file or API keys to GitHub.**
+**Never commit API keys or `.env` files to GitHub.**
 
 ### 7. Run the application
 
@@ -107,54 +139,67 @@ SERPER_API_KEY=your_serper_api_key
 python -m streamlit run app.py
 ```
 
+The Streamlit application will open in your browser.
+
 ## 💡 How It Works
 
-1. The user enters a question in the Streamlit interface.
-2. The **Assistant Agent** generates an answer using its own knowledge.
-3. The **Web Search Assistant** searches the web and generates a researched answer.
-4. The **Entry Agent** completes the recording step.
-5. The application saves the query and both answers into `answers.txt`.
-6. Both answers are displayed in the Streamlit interface.
-7. The user can download `answers.txt`.
+1. The user enters a question through the Streamlit interface.
+2. The **Assistant Agent** generates an initial response.
+3. The **Web Search Assistant** researches the question using web search.
+4. The **Entry Agent** records the interaction.
+5. The results are saved to `answers.txt`.
+6. The application displays the generated responses.
+7. The user can download the recorded results.
 
-## 📄 Buildathon
+## 🎯 Project Goal
 
-This project was created as part of a **Gen AI Architecture / CrewAI Multi-Agent Customer Support Buildathon**.
+The goal of this project is to gain practical experience building **multi-agent AI applications with CrewAI**.
 
-## 🔗 Repository
+It demonstrates:
 
-GitHub:
+* Agent specialization
+* Sequential agent workflows
+* Web-enabled AI research
+* Customer-support automation
+* LLM integration
+* Streamlit application development
 
-https://github.com/spriyaldiary-ship-it/buildathon-support-crew
+## 📚 Learning Outcomes
 
-````
+This project provided hands-on experience with:
 
-### Step 3 — Save
+* CrewAI
+* AI agents
+* Multi-agent orchestration
+* Sequential workflows
+* Web search tools
+* OpenAI LLM integration
+* Streamlit
+* Environment variables
+* Python application development
 
-Press:
+## 🔮 Future Improvements
 
-```text
-Ctrl + S
-````
+Possible future enhancements include:
 
-### Step 4 — Push README to GitHub
+* Conversation memory
+* Better customer-support knowledge bases
+* RAG integration
+* Agent task validation
+* Structured response storage
+* Customer history tracking
+* Authentication
+* Production database integration
+* API-based deployment
 
-In PowerShell:
+## 📄 Buildathon Project
 
-```powershell
-git add README.md
-```
+This project was created as part of a **Generative AI Architecture / CrewAI Multi-Agent Customer Support Buildathon**.
 
-Then:
+## 👩‍💻 Author
 
-```powershell
-git commit -m "Add project README"
-```
+**Priyal**
 
-Then:
+Hands-on learning in:
 
-```powershell
-git push
-```
-
-After that, refresh your GitHub repository. You should see **README.md displayed automatically on the repository homepage**.
+**Generative AI • AI Agents • CrewAI • RAG • AI Automation**
